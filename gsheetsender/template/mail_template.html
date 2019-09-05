@@ -1,75 +1,106 @@
-<html>
+﻿<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta http-equiv=Content-Type content="text/html; charset=UTF-8">
-<style>
-</style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Sample HTML Template</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 14px;
+            margin: 0;
+            padding: 30px;
+        }
 
+        table {
+            border: none;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            padding: 5px;
+            border: 1px solid silver;
+            text-align: left;
+        }
+
+        td {
+            vertical-align: middle;
+            height: 15.75pt;
+        }
+
+        a {
+            color: blue;
+        }
+
+            a:visited {
+                color: #954F72;
+            }
+    </style>
 </head>
+<body>
+    <p>Hi Dude !</p>
+    <p></p>
+    <p>How are you?</p>
+    <p>Here is the table:</p>
+    <p></p>
+    <table>
+        <thead>
+            <tr>
+                <th>Project</th>
+                <th>Environment</th>
+                <th>Release Date Plan</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for value in values %}
+            <tr>
+                <td>
+                    {{ value[0] }}
+                </td>
+                <td>
+                    {{ value[1] }}
+                </td>
+                <td>
+                    {{ value[2] }}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 
-<body lang=EN-GB link=blue vlink="#954F72">
+    <p>Multi ranges table</p>
+    <table>
+        <thead>
+            <tr>
+                <th>column1</th>
+                <th>column2</th>
+                <th>column3</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for value in named_ranges.release_table %}
+            <tr>
+                <td>
+                    {{ value[0] }}
+                </td>
+                <td>
+                    {{ value[1] }}
+                </td>
+                <td>
+                    {{ value[2] }}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 
-<div>
-
-<p>Hi Dude !</span></p>
-
-<p></p>
-
-<p>How are you?</p>
-
-<p>Here is the table:</p>
- <p></p>
-<table border=0 cellspacing=0 cellpadding=0 width=0>
- <tr>
-  <td><p><b><span>Project</span></b></p></td>
-  <td><p><b><span>Environment</span></b></p></td>
-  <td><p><b><span>Release Date Plan</span></b></p></td>
- </tr>
-{% for value in values %}
- <tr style='height:15.75pt'>
-  <td valign=bottom >
-  <p><span>{{ value[0] }}</span></p>
-  </td>
-  <td valign=bottom>
-  <p><span >{{ value[1] }}</span></p>
-  </td>
-  <td valign=bottom >
-  <p ><span>{{ value[2] }}</span></p>
-  </td>
- </tr>
-{% endfor %}
-</table>
-
-
-<p>Multi ranges table</p>
-<table border=0 cellspacing=0 cellpadding=0 width=0>
-  <tr>
-   <td><p><b><span>column1</span></b></p></td>
-   <td><p><b><span>column2</span></b></p></td>
-   <td><p><b><span>column3</span></b></p></td>
-  </tr>
- {% for value in named_ranges.release_table %}
-  <tr style='height:15.75pt'>
-   <td valign=bottom >
-   <p><span>{{ value[0] }}</span></p>
-   </td>
-   <td valign=bottom>
-   <p><span >{{ value[1] }}</span></p>
-   </td>
-   <td valign=bottom >
-   <p ><span>{{ value[2] }}</span></p>
-   </td>
-  </tr>
- {% endfor %}
- </table>
- 
-<p>Example cell value:</p>
-<p>{{cell_values.example_cell}}</p>
-<p></p>
-<p><span>Br.:<br>
-DevDave</span></p>
-
-</div>
-
+    <p>Example cell value:</p>
+    <p>{{cell_values.example_cell}}</p>
+    <p></p>
+    <p>
+        Br.:<br />
+        DevDave
+    </p>
 </body>
-
 </html>
